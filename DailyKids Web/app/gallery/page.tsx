@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,6 +22,12 @@ const galleryItems = [
 const categories = ["All", "facilities", "events", "classroom", "safety"] as const;
 
 export default function GalleryPage() {
+  const [activeFilter, setActiveFilter] = useState<string>("All");
+
+  const filteredItems = activeFilter === "All"
+    ? galleryItems
+    : galleryItems.filter((item) => item.category === activeFilter);
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-zinc-200">
@@ -58,18 +67,22 @@ export default function GalleryPage() {
         {/* Category filter */}
         <div className="flex justify-center gap-3 mb-10 flex-wrap">
           {categories.map((cat) => (
-            <a
+            <button
               key={cat}
-              href={cat === "All" ? "/gallery" : `/gallery?cat=${cat}`}
-              className="px-4 py-2 rounded-full text-sm font-medium border border-zinc-300 text-zinc-600 hover:bg-teal-50 hover:text-teal-700 hover:border-teal-300 transition-colors"
+              onClick={() => setActiveFilter(cat)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeFilter === cat
+                  ? "bg-teal-600 text-white"
+                  : "border border-zinc-300 text-zinc-600 hover:bg-teal-50 hover:text-teal-700 hover:border-teal-300"
+              }`}
             >
               {cat === "All" ? "All" : cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </a>
+            </button>
           ))}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryItems.map((item) => (
+          {filteredItems.map((item) => (
             <div
               key={item.caption}
               className="bg-white rounded-xl p-6 text-center border border-zinc-200 hover:shadow-md transition-shadow"

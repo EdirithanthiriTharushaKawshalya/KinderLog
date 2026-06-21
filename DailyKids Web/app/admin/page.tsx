@@ -25,9 +25,11 @@ export default function AdminPage() {
   // --- Admissions state ---
   const [applications, setApplications] = useState<AdmissionApplication[]>([]);
   const [filter, setFilter] = useState<StatusFilter>("pending");
+  const [admissionsError, setAdmissionsError] = useState<string | null>(null);
 
   // --- Branches state ---
   const [branches, setBranches] = useState<BranchPublicInfo[]>([]);
+  const [branchesError, setBranchesError] = useState<string | null>(null);
   const [editingBranch, setEditingBranch] = useState<BranchPublicInfo | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [branchForm, setBranchForm] = useState({
@@ -48,6 +50,11 @@ export default function AdminPage() {
         setApplications(
           snap.docs.map((d) => ({ id: d.id, ...d.data() } as AdmissionApplication))
         );
+        setAdmissionsError(null);
+      },
+      (err) => {
+        console.error("Admissions listener error:", err);
+        setAdmissionsError(err.message);
       }
     );
 
@@ -57,6 +64,11 @@ export default function AdminPage() {
         setBranches(
           snap.docs.map((d) => ({ id: d.id, ...d.data() } as unknown as BranchPublicInfo))
         );
+        setBranchesError(null);
+      },
+      (err) => {
+        console.error("Branches listener error:", err);
+        setBranchesError(err.message);
       }
     );
 
@@ -203,6 +215,12 @@ export default function AdminPage() {
               </div>
             </div>
 
+            {admissionsError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+                ⚠️ Could not load admissions: {admissionsError}
+              </div>
+            )}
+
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-10">
               {([
                 { label: "Total", key: "all" as const, color: "text-zinc-700", bg: "bg-zinc-50" },
@@ -301,6 +319,12 @@ export default function AdminPage() {
                 </button>
               )}
             </div>
+
+            {branchesError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+                ⚠️ Could not load branches: {branchesError}
+              </div>
+            )}
 
             {/* Add / Edit form */}
             {(showAddForm || editingBranch) && (

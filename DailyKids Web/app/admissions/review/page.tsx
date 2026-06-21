@@ -17,6 +17,7 @@ import type { AdmissionApplication } from "@/lib/types";
 export default function ReviewPage() {
   const [applications, setApplications] = useState<AdmissionApplication[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("pending");
   const [noteInput, setNoteInput] = useState<Record<string, string>>({});
 
@@ -28,6 +29,11 @@ export default function ReviewPage() {
         ...doc.data(),
       })) as AdmissionApplication[];
       setApplications(apps);
+      setLoading(false);
+      setError(null);
+    }, (err) => {
+      console.error("Review listener error:", err);
+      setError(err.message);
       setLoading(false);
     });
     return () => unsubscribe();
@@ -118,6 +124,12 @@ export default function ReviewPage() {
             </button>
           ))}
         </div>
+
+        {error && (
+          <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+            ⚠️ Could not load applications: {error}
+          </div>
+        )}
 
         {loading ? (
           <div className="text-center py-20 text-zinc-400">Loading applications...</div>

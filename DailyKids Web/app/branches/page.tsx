@@ -49,12 +49,19 @@ const fallbackBranches: Omit<BranchPublicInfo, "id">[] = [
 export default function BranchesPage() {
   const [branches, setBranches] = useState<BranchPublicInfo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const q = query(collection(db, "branchInfo"), orderBy("name"));
     const unsub = onSnapshot(q, (snap) => {
       const data = snap.docs.map((d) => ({ id: d.id, ...d.data() } as BranchPublicInfo));
       setBranches(data.length > 0 ? data : fallbackBranches as BranchPublicInfo[]);
+      setLoading(false);
+      setError(null);
+    }, (err) => {
+      console.error("Branches listener error:", err);
+      setError(err.message);
+      setBranches(fallbackBranches as BranchPublicInfo[]);
       setLoading(false);
     });
     return () => unsub();
@@ -94,6 +101,12 @@ export default function BranchesPage() {
             ? `${branches.length} convenient ${branches.length === 1 ? "location" : "locations"}, each offering a safe, nurturing environment with certified educators.`
             : "Convenient locations, each offering a safe, nurturing environment with certified educators."}
         </p>
+
+        {error && (
+          <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-700 max-w-lg mx-auto text-center">
+            ⚠️ Could not connect to server. Showing default branch info.
+          </div>
+        )}
 
         {loading ? (
           <div className="text-center py-20 text-zinc-400">Loading branches...</div>
