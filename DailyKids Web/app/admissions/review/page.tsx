@@ -74,8 +74,8 @@ export default function ReviewPage() {
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-zinc-200">
         <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
-            <span className="text-3xl">🧒</span>
-            <span className="text-xl font-bold text-teal-700">KinderLog</span>
+            <img src="/DailyKids.png" alt="DailyKids" className="h-10 w-auto" />
+            <span className="text-xl font-bold text-teal-700">DailyKids</span>
           </Link>
           <div className="flex items-center gap-6 text-sm font-medium">
             <Link href="/" className="text-zinc-600 hover:text-teal-700 transition-colors">
@@ -225,10 +225,10 @@ export default function ReviewPage() {
         )}
       </main>
 
-      <footer className="bg-zinc-900 text-zinc-400 py-12">
+      <footer className="bg-white border-t border-zinc-200 text-zinc-500 py-12">
         <div className="max-w-6xl mx-auto px-6 text-center text-sm">
           <p>
-            <span className="text-white font-semibold">KinderLog Preschool</span>{" "}
+            <span className="text-zinc-800 font-semibold">DailyKids Preschool</span>{" "}
             &copy; {new Date().getFullYear()}
           </p>
         </div>

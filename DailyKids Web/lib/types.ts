@@ -53,14 +53,15 @@ export interface Student {
 // ---- Website Types ----
 
 export interface BranchPublicInfo {
-  branchId: string;
+  id?: string;
+  branchId?: string;
   name: string;
   address: string;
   phone: string;
   email: string;
   description: string;
   facilities: string[];
-  heroImageUrl: string;
+  heroImageUrl?: string;
   classNames: string[];
 }
 

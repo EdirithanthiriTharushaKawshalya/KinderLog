@@ -1,0 +1,148 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { db } from "@/lib/firebase";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import type { BranchPublicInfo } from "@/lib/types";
+
+const fallbackBranches: Omit<BranchPublicInfo, "id">[] = [
+  {
+    name: "Ambalangoda",
+    address: "123 Galle Road, Ambalangoda",
+    phone: "+94 91 225 6789",
+    email: "ambalangoda@dailykids.com",
+    description:
+      "Our flagship campus featuring state-of-the-art classrooms, a vibrant outdoor play area, and a dedicated arts & crafts studio.",
+    facilities: [
+      "Air-conditioned classrooms",
+      "Outdoor playground",
+      "Arts & crafts studio",
+      "Nap room",
+      "CCTV security",
+      "Medical room",
+    ],
+    heroImageUrl: "",
+    classNames: ["FS1", "FS2", "Yellow", "Green"],
+  },
+  {
+    name: "Hikkaduwa",
+    address: "45 Beach Road, Hikkaduwa",
+    phone: "+94 91 226 1234",
+    email: "hikkaduwa@dailykids.com",
+    description:
+      "Our coastal campus offering a unique learning environment with a nature garden, music room, and spacious classrooms with ocean views.",
+    facilities: [
+      "Nature garden",
+      "Music & movement room",
+      "Spacious classrooms",
+      "Library corner",
+      "CCTV security",
+      "Medical room",
+    ],
+    heroImageUrl: "",
+    classNames: ["FS1", "FS2"],
+  },
+];
+
+export default function BranchesPage() {
+  const [branches, setBranches] = useState<BranchPublicInfo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, "branchInfo"), orderBy("name"));
+    const unsub = onSnapshot(q, (snap) => {
+      const data = snap.docs.map((d) => ({ id: d.id, ...d.data() } as BranchPublicInfo));
+      setBranches(data.length > 0 ? data : fallbackBranches as BranchPublicInfo[]);
+      setLoading(false);
+    });
+    return () => unsub();
+  }, []);
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-zinc-200">
+        <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+          <Link href="/" className="flex items-center gap-3">
+            <img src="/DailyKids.png" alt="DailyKids" className="h-10 w-auto" />
+            <span className="text-xl font-bold text-teal-700">DailyKids</span>
+          </Link>
+          <div className="flex items-center gap-6 text-sm font-medium">
+            <Link href="/" className="text-zinc-600 hover:text-teal-700 transition-colors">
+              Home
+            </Link>
+            <Link href="/branches" className="text-teal-700 border-b-2 border-teal-600 pb-1">
+              Branches
+            </Link>
+            <Link
+              href="/admissions/apply"
+              className="bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition-colors"
+            >
+              Apply Now
+            </Link>
+          </div>
+        </nav>
+      </header>
+
+      <main className="flex-1 max-w-6xl mx-auto px-6 py-16 w-full">
+        <h1 className="text-4xl font-bold text-zinc-800 mb-4 text-center">
+          Our Branches
+        </h1>
+        <p className="text-center text-zinc-500 mb-12 max-w-lg mx-auto">
+          {branches.length > 0
+            ? `${branches.length} convenient ${branches.length === 1 ? "location" : "locations"}, each offering a safe, nurturing environment with certified educators.`
+            : "Convenient locations, each offering a safe, nurturing environment with certified educators."}
+        </p>
+
+        {loading ? (
+          <div className="text-center py-20 text-zinc-400">Loading branches...</div>
+        ) : branches.length === 0 ? (
+          <div className="text-center py-20 text-zinc-400">
+            No branch information available yet.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {branches.map((b) => (
+              <div
+                key={b.id ?? b.name}
+                className="bg-white rounded-2xl p-8 border border-zinc-200 hover:shadow-lg transition-shadow"
+              >
+                <h2 className="text-2xl font-bold text-teal-700 mb-3">{b.name}</h2>
+                <p className="text-zinc-500 mb-4">{b.description}</p>
+                <div className="space-y-2 text-sm text-zinc-600 mb-4">
+                  <p>📍 {b.address}</p>
+                  <p>📞 {b.phone}</p>
+                  <p>✉️ {b.email}</p>
+                </div>
+                {b.classNames.length > 0 && (
+                  <p className="text-sm font-semibold text-zinc-700 mb-2">
+                    Classes: {b.classNames.join(", ")}
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-2">
+                  {b.facilities.map((f) => (
+                    <span
+                      key={f}
+                      className="text-xs bg-teal-50 text-teal-700 px-3 py-1 rounded-full font-medium"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </main>
+
+      <footer className="bg-white border-t border-zinc-200 text-zinc-500 py-12">
+        <div className="max-w-6xl mx-auto px-6 text-center text-sm">
+          <p>
+            <span className="text-zinc-800 font-semibold">DailyKids Preschool</span>{" "}
+            &copy; {new Date().getFullYear()}
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}

@@ -12,7 +12,7 @@ const testimonials = [
     parentName: "Nimal Perera",
     childName: "Amaya",
     quote:
-      "KinderLog has been a wonderful experience for our daughter. The teachers are caring and communicative.",
+      "DailyKids has been a wonderful experience for our daughter. The teachers are caring and communicative.",
     rating: 5,
   },
   {
@@ -36,7 +36,7 @@ const branches = [
     name: "Ambalangoda",
     address: "123 Galle Road, Ambalangoda",
     phone: "+94 91 225 6789",
-    email: "ambalangoda@kinderlog.com",
+    email: "ambalangoda@dailykids.com",
     description:
       "Our flagship campus featuring state-of-the-art classrooms, a vibrant outdoor play area, and a dedicated arts & crafts studio.",
     facilities: [
@@ -53,7 +53,7 @@ const branches = [
     name: "Hikkaduwa",
     address: "45 Beach Road, Hikkaduwa",
     phone: "+94 91 226 1234",
-    email: "hikkaduwa@kinderlog.com",
+    email: "hikkaduwa@dailykids.com",
     description:
       "Our coastal campus offering a unique learning environment with a nature garden, music room, and spacious classrooms with ocean views.",
     facilities: [
@@ -68,17 +68,6 @@ const branches = [
   },
 ];
 
-const galleryItems = [
-  { caption: "Outdoor Playground — Ambalangoda", category: "facilities" },
-  { caption: "Nature Garden — Hikkaduwa", category: "facilities" },
-  { caption: "Annual Sports Day 2026", category: "events" },
-  { caption: "Art Exhibition — FS1 Students", category: "events" },
-  { caption: "Reading Corner — FS2 Classroom", category: "classroom" },
-  { caption: "Group Activity — Yellow Class", category: "classroom" },
-  { caption: "Fire Drill Practice", category: "safety" },
-  { caption: "CCTV Monitoring Station", category: "safety" },
-];
-
 export default function Home() {
   return (
     <div className="flex flex-col">
@@ -86,8 +75,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-zinc-200">
         <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
-            <span className="text-3xl">🧒</span>
-            <span className="text-xl font-bold text-teal-700">KinderLog</span>
+            <img src="/DailyKids.png" alt="DailyKids" className="h-10 w-auto" />
+            <span className="text-xl font-bold text-teal-700">DailyKids</span>
           </Link>
           <div className="flex items-center gap-6 text-sm font-medium">
             <Link href="/" className="text-teal-700 border-b-2 border-teal-600 pb-1">
@@ -95,9 +84,6 @@ export default function Home() {
             </Link>
             <Link href="/branches" className="text-zinc-600 hover:text-teal-700 transition-colors">
               Branches
-            </Link>
-            <Link href="/gallery" className="text-zinc-600 hover:text-teal-700 transition-colors">
-              Gallery
             </Link>
             <Link
               href="/admissions/apply"
@@ -112,12 +98,12 @@ export default function Home() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-teal-600 to-teal-800 text-white">
         <div className="max-w-6xl mx-auto px-6 py-24 text-center">
-          <span className="text-6xl mb-6 block">🧒</span>
+          <img src="/DailyKids.png" alt="DailyKids" className="h-24 w-auto mx-auto mb-6" />
           <h1 className="text-5xl font-bold mb-4 tracking-tight">
-            KinderLog Preschool
+            DailyKids Preschool
           </h1>
-          <p className="text-xl text-teal-100 mb-2">Nurturing Young Minds Since 2020</p>
-          <p className="text-teal-200 max-w-xl mx-auto mb-10">
+          <p className="text-xl text-white/90 mb-2">Nurturing Young Minds Since 2020</p>
+          <p className="text-white/80 max-w-xl mx-auto mb-10">
             Every child is unique. Our play-based curriculum fosters curiosity,
             creativity, and confidence in a safe, nurturing environment.
           </p>
@@ -141,7 +127,7 @@ export default function Home() {
       {/* Features */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <h2 className="text-3xl font-bold text-center mb-12 text-zinc-800">
-          Why Choose KinderLog?
+          Why Choose DailyKids?
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((f) => (
@@ -226,35 +212,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Preview */}
+      {/* Facebook / Social */}
       <section className="bg-white py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4 text-zinc-800">
-            Virtual Tour & Gallery
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-zinc-800">
+            Follow Us on Facebook
           </h2>
-          <p className="text-center text-zinc-500 mb-12">
-            Explore our facilities, events, and classrooms.
+          <p className="text-zinc-500 mb-8">
+            Stay connected with DailyKids! Follow our Facebook page for
+            updates, events, and glimpses into daily life at our preschool.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {galleryItems.slice(0, 8).map((item) => (
-              <div
-                key={item.caption}
-                className="bg-zinc-100 rounded-xl p-6 text-center hover:bg-teal-50 transition-colors"
-              >
-                <span className="text-3xl block mb-2">🖼️</span>
-                <p className="text-xs text-zinc-600 font-medium">{item.caption}</p>
-                <span className="text-[10px] text-zinc-400 uppercase">{item.category}</span>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link
-              href="/gallery"
-              className="text-teal-600 font-semibold hover:underline"
-            >
-              View Full Gallery →
-            </Link>
-          </div>
+          <a
+            href="https://facebook.com/DailyKidsPreschool"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[#1877F2] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#166fe5] transition-colors shadow-lg shadow-blue-200"
+          >
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+            </svg>
+            Visit Our Facebook Page
+          </a>
         </div>
       </section>
 
@@ -262,7 +240,7 @@ export default function Home() {
       <section className="bg-teal-700 text-white py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Enroll?</h2>
-          <p className="text-teal-100 mb-8 max-w-lg mx-auto">
+          <p className="text-white/80 mb-8 max-w-lg mx-auto">
             Fill out our online application form and our team will review your
             submission within 3–5 business days.
           </p>
@@ -284,17 +262,17 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-900 text-zinc-400 py-12">
+      <footer className="bg-white border-t border-zinc-200 text-zinc-500 py-12">
         <div className="max-w-6xl mx-auto px-6 text-center text-sm">
           <p className="mb-2">
-            <span className="text-white font-semibold">KinderLog Preschool</span> —
+            <span className="text-zinc-800 font-semibold">DailyKids Preschool</span> —
             Nurturing Young Minds Since 2020
           </p>
           <p>
-            Ambalangoda · Hikkaduwa | 📞 +94 91 225 6789 | ✉️ info@kinderlog.com
+            Ambalangoda · Hikkaduwa | 📞 +94 91 225 6789 | ✉️ info@dailykids.com
           </p>
-          <p className="mt-4 text-zinc-600">
-            &copy; {new Date().getFullYear()} KinderLog. All rights reserved.
+          <p className="mt-4 text-zinc-400">
+            &copy; {new Date().getFullYear()} DailyKids. All rights reserved.
           </p>
         </div>
       </footer>

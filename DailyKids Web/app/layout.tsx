@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KinderLog Preschool — Nurturing Young Minds",
+  title: "DailyKids Preschool",
   description:
-    "KinderLog Preschool offers quality early childhood education across multiple branches. Explore our curriculum, facilities, and admissions process.",
+    "DailyKids Preschool offers quality early childhood education across multiple branches. Explore our curriculum, facilities, and admissions process.",
 };
 
 export default function RootLayout({
