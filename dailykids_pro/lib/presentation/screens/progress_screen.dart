@@ -273,7 +273,7 @@ class _ProgressScreenState extends State<ProgressScreen> with SingleTickerProvid
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: [AppTheme.primaryTeal, Color(0xFF0F766E)]),
+                gradient: const LinearGradient(colors: [AppTheme.primaryTeal, Color(0xFF6941C6)]),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(

@@ -36,33 +36,33 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200">
-        <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
+      <header className="fixed top-4 left-0 right-0 z-50 mx-auto max-w-5xl w-[92%] sm:w-[95%] glass-card rounded-full border border-teal-100/30 shadow-lg transition-all duration-300">
+        <nav className="flex items-center justify-between px-4 sm:px-6 py-2.5">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Image
               src="/DailyKids.png"
               alt="DailyKids"
-              width={40}
-              height={40}
-              className="h-8 w-auto sm:h-10"
+              width={36}
+              height={36}
+              className="h-8 w-auto sm:h-9"
               priority
             />
             <span className="text-lg sm:text-xl font-bold text-teal-700">
               DailyKids
             </span>
           </Link>
-
+ 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <div className="hidden md:flex items-center gap-2 text-sm font-medium">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={
                   isActive(link.href)
-                    ? "text-teal-700 border-b-2 border-teal-600 pb-1"
-                    : "text-zinc-600 hover:text-teal-700 transition-colors"
+                    ? "bg-teal-100/70 text-teal-700 px-4 py-2 rounded-full font-semibold"
+                    : "text-zinc-600 hover:text-teal-700 hover:bg-teal-50/50 px-4 py-2 rounded-full transition-all"
                 }
               >
                 {link.label}
@@ -70,7 +70,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/admissions/apply"
-              className="bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition-colors shadow-sm font-semibold"
+              className="bg-teal-600 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition-colors shadow-sm font-semibold ml-2"
             >
               Apply Now
             </Link>

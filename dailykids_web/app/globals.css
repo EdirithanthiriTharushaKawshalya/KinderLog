@@ -1,19 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F8F9FE; /* Soft lavender-tinted background */
+  --foreground: #1D2939; /* Charcoal body text */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* Override Tailwind v4 teal palette with a beautiful soft lavender-purple palette */
+  --color-teal-50: #F9F5FF;
+  --color-teal-100: #F4EBFF;
+  --color-teal-200: #E9D7FE;
+  --color-teal-300: #D6BBFB;
+  --color-teal-400: #B28CFF;
+  --color-teal-500: #9B72F4;
+  --color-teal-600: #7F56D9;
+  --color-teal-700: #6941C6;
+  --color-teal-800: #53389E;
+  --color-teal-900: #42307D;
+
+  /* Map zinc palette to soft lavenders (50-400) and cool charcoals (500-900) */
+  --color-zinc-50: #F8F9FE;
+  --color-zinc-100: #F4EBFF;
+  --color-zinc-200: #EAEBFE;
+  --color-zinc-300: #D3D4F5;
+  --color-zinc-400: #B28CFF;
+  --color-zinc-500: #475467;
+  --color-zinc-600: #344054;
+  --color-zinc-700: #1D2939;
+  --color-zinc-800: #101828;
+  --color-zinc-900: #0C111D;
+
+  /* Font mappings */
+  --font-sans: 'Plus Jakarta Sans', var(--font-plus-jakarta-sans), sans-serif;
+  --font-display: 'Fredoka', var(--font-fredoka), cursive;
+  
+  /* Override border radius classes for smoother corners */
+  --radius-xl: 1.25rem; /* 20px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-3xl: 2rem;    /* 32px */
+  
+  /* Soft lavender-tinted shadow */
+  --shadow-lg: 0 10px 30px -3px rgba(127, 86, 217, 0.08), 0 4px 12px -2px rgba(127, 86, 217, 0.03);
+}
+
+/* Animated background blobs */
+@keyframes float-slow-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, 80px) scale(1.15);
+  }
+}
+
+@keyframes float-slow-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-80px, -60px) scale(0.85);
+  }
+}
+
+@keyframes float-slow-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(0.9);
+  }
+  50% {
+    transform: translate(50px, -80px) scale(1.1);
+  }
+}
+
+.animate-blob-1 {
+  animation: float-slow-1 25s infinite ease-in-out;
+}
+
+.animate-blob-2 {
+  animation: float-slow-2 30s infinite ease-in-out;
+}
+
+.animate-blob-3 {
+  animation: float-slow-3 20s infinite ease-in-out;
+}
+
+/* Base element overrides */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
+
+/* Glassmorphism helper class (More glass blur, less see-through) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Hover micro-animations */
+button, a {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animated background blobs */
+@keyframes float-slow-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, 80px) scale(1.15);
+  }
+}
+
+@keyframes float-slow-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-80px, -60px) scale(0.85);
+  }
+}
+
+@keyframes float-slow-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(0.9);
+  }
+  50% {
+    transform: translate(50px, -80px) scale(1.1);
+  }
+}
+
+.animate-blob-1 {
+  animation: float-slow-1 25s infinite ease-in-out;
+}
+
+.animate-blob-2 {
+  animation: float-slow-2 30s infinite ease-in-out;
+}
+
+.animate-blob-3 {
+  animation: float-slow-3 20s infinite ease-in-out;
+}
+
+

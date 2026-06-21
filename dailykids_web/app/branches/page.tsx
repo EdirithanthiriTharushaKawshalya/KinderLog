@@ -69,7 +69,7 @@ export default function BranchesPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-1 max-w-6xl mx-auto px-6 py-16 w-full">
+      <main className="flex-1 max-w-6xl mx-auto px-6 pt-32 pb-16 w-full">
         <h1 className="text-4xl font-bold text-zinc-800 mb-4 text-center">
           Our Branches
         </h1>
@@ -96,7 +96,7 @@ export default function BranchesPage() {
             {branches.map((b) => (
               <div
                 key={b.id ?? b.name}
-                className="bg-white rounded-2xl p-8 border border-zinc-200 hover:shadow-lg transition-shadow"
+                className="glass-card rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
                 <h2 className="text-2xl font-bold text-teal-700 mb-3">{b.name}</h2>
                 <p className="text-zinc-500 mb-4">{b.description}</p>

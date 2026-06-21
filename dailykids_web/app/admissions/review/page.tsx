@@ -78,7 +78,7 @@ export default function ReviewPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-1 max-w-4xl mx-auto px-6 py-16 w-full">
+      <main className="flex-1 max-w-4xl mx-auto px-6 pt-32 pb-16 w-full">
         <h1 className="text-4xl font-bold text-zinc-800 mb-2">Admission Review</h1>
         <p className="text-zinc-500 mb-8">
           Review, approve, or reject incoming applications.
@@ -119,7 +119,7 @@ export default function ReviewPage() {
             {filteredApps.map((app) => (
               <div
                 key={app.id}
-                className="bg-white rounded-xl p-6 border border-zinc-200 hover:shadow-md transition-shadow"
+                className="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">

@@ -75,7 +75,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-teal-600 to-teal-800 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-24 text-center">
+        <div className="max-w-6xl mx-auto px-6 pt-36 pb-24 text-center">
           <Image src="/DailyKids.png" alt="DailyKids" width={96} height={96} className="h-24 w-auto mx-auto mb-6" />
           <h1 className="text-5xl font-bold mb-4 tracking-tight">
             DailyKids Preschool
@@ -111,7 +111,7 @@ export default function Home() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="bg-white rounded-2xl p-6 border border-zinc-200 text-center hover:shadow-lg transition-shadow"
+              className="glass-card rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center"
             >
               <span className="text-4xl block mb-4">{f.icon}</span>
               <h3 className="font-bold text-zinc-800 mb-1">{f.title}</h3>
@@ -131,7 +131,7 @@ export default function Home() {
             {testimonials.map((t) => (
               <div
                 key={t.parentName}
-                className="bg-zinc-50 rounded-2xl p-6 border border-zinc-200"
+                className="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/50 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex gap-1 mb-3">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -163,7 +163,7 @@ export default function Home() {
           {branches.map((b) => (
             <div
               key={b.name}
-              className="bg-white rounded-2xl p-8 border border-zinc-200 hover:shadow-lg transition-shadow"
+              className="glass-card rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               <h3 className="text-2xl font-bold text-teal-700 mb-3">{b.name}</h3>
               <p className="text-zinc-500 mb-4">{b.description}</p>

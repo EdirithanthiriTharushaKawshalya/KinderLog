@@ -183,7 +183,7 @@ class DashboardScreen extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [AppTheme.primaryTeal, Color(0xFF0F766E)],
+          colors: [AppTheme.primaryTeal, Color(0xFF6941C6)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),

@@ -167,7 +167,7 @@ export default function AdminPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-1 max-w-5xl mx-auto px-6 py-16 w-full">
+      <main className="flex-1 max-w-5xl mx-auto px-6 pt-32 pb-16 w-full">
         {/* Tab bar */}
         <div className="flex gap-2 mb-10">
           {([
@@ -233,7 +233,7 @@ export default function AdminPage() {
             ) : (
               <div className="space-y-4">
                 {filteredApps.map((app) => (
-                  <div key={app.id} className="bg-white rounded-xl p-6 border border-zinc-200 hover:shadow-md transition-shadow">
+                  <div key={app.id} className="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 font-bold text-lg">
@@ -311,7 +311,7 @@ export default function AdminPage() {
 
             {/* Add / Edit form */}
             {(showAddForm || editingBranch) && (
-              <div className="bg-white rounded-xl p-6 border border-teal-200 shadow-sm mb-8 space-y-4">
+              <div className="glass-card rounded-2xl p-6 shadow-sm mb-8 space-y-4">
                 <h3 className="font-bold text-lg text-teal-700">
                   {editingBranch ? `Edit: ${editingBranch.name}` : "New Branch"}
                 </h3>
@@ -401,7 +401,7 @@ export default function AdminPage() {
             ) : (
               <div className="space-y-4">
                 {branches.map((b) => (
-                  <div key={b.id} className="bg-white rounded-xl p-6 border border-zinc-200 hover:shadow-sm transition-shadow">
+                  <div key={b.id} className="glass-card rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <h3 className="font-bold text-lg text-zinc-800">{b.name}</h3>

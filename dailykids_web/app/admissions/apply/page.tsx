@@ -60,8 +60,8 @@ export default function ApplyPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-50 px-4">
-        <div className="bg-white rounded-2xl p-10 max-w-md w-full text-center shadow-lg border border-zinc-200">
+      <div className="min-h-screen flex items-center justify-center px-4 relative">
+        <div className="glass-card rounded-2xl p-10 max-w-md w-full text-center shadow-lg">
           <span className="text-5xl block mb-4">✅</span>
           <h1 className="text-2xl font-bold text-teal-700 mb-2">
             Application Submitted!
@@ -83,7 +83,7 @@ export default function ApplyPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-1 max-w-2xl mx-auto px-6 py-16 w-full">
+      <main className="flex-1 max-w-2xl mx-auto px-6 pt-32 pb-16 w-full">
         <h1 className="text-4xl font-bold text-zinc-800 mb-2">Admissions Application</h1>
         <p className="text-zinc-500 mb-10">
           Fill out the form below to apply for your child. Choose your preferred
@@ -92,7 +92,7 @@ export default function ApplyPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Child Info */}
-          <div className="bg-white rounded-xl p-6 border border-zinc-200 space-y-4">
+          <div className="glass-card rounded-2xl p-6 space-y-4">
             <h2 className="font-bold text-lg text-teal-700">Child Information</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -139,7 +139,7 @@ export default function ApplyPage() {
           </div>
 
           {/* Parent Info */}
-          <div className="bg-white rounded-xl p-6 border border-zinc-200 space-y-4">
+          <div className="glass-card rounded-2xl p-6 space-y-4">
             <h2 className="font-bold text-lg text-teal-700">Parent / Guardian Information</h2>
             <div>
               <label className="block text-sm font-medium text-zinc-700 mb-1">
@@ -181,7 +181,7 @@ export default function ApplyPage() {
           </div>
 
           {/* Branch & Class */}
-          <div className="bg-white rounded-xl p-6 border border-zinc-200 space-y-4">
+          <div className="glass-card rounded-2xl p-6 space-y-4">
             <h2 className="font-bold text-lg text-teal-700">Preferred Branch & Class</h2>
             <div>
               <label className="block text-sm font-medium text-zinc-700 mb-1">
@@ -227,7 +227,7 @@ export default function ApplyPage() {
           </div>
 
           {/* Medical */}
-          <div className="bg-white rounded-xl p-6 border border-zinc-200 space-y-4">
+          <div className="glass-card rounded-2xl p-6 space-y-4">
             <h2 className="font-bold text-lg text-teal-700">Medical Information</h2>
             <div>
               <label className="block text-sm font-medium text-zinc-700 mb-1">
